@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import StripeChekout from "react-stripe-checkout";
 
 const StripeCheckoutButton = ({ price }) => {
@@ -27,7 +26,5 @@ const StripeCheckoutButton = ({ price }) => {
     />
   );
 };
-
-StripeCheckoutButton.propTypes = {};
 
 export default StripeCheckoutButton;
