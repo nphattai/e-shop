@@ -3,8 +3,7 @@ import MenuItem from "../menu-item/menu-item.component";
 import { connect } from "react-redux";
 import "./directory.styles.scss";
 
-const Directory = ({ directory }) => {
-  const sections = directory.sections;
+const Directory = ({ sections }) => {
   return (
     <div className='directory-menu'>
       {sections.map(({ title, imageUrl, id, size, linkUrl }) => (
@@ -21,7 +20,7 @@ const Directory = ({ directory }) => {
 };
 
 const mapStateToProps = state => ({
-  directory: state.directory
+  sections: state.directory.sections
 });
 
 export default connect(mapStateToProps)(Directory);

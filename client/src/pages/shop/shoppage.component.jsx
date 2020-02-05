@@ -13,7 +13,7 @@ const ShopPage = ({ match, fetchCollectionsStart }) => {
     // Use Saga Middleware
     fetchCollectionsStart();
     return () => console.log("Unmounting...");
-  }, []);
+  }, [fetchCollectionsStart]);
 
   return (
     <div className='shop-page'>

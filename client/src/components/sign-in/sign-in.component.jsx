@@ -32,7 +32,8 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
   };
 
   const onChange = event => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   return (
