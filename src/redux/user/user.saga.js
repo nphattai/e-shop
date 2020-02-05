@@ -9,6 +9,7 @@ import {
     CHECK_USER_SESSION, SIGN_OUT_START, SIGN_UP_START,
 } from './user.type';
 import { auth, googleProvider, createUserProfileDocument, getCurrentUser } from '../../firebase/firebase.utils';
+import { fetchDirectoryStart } from '../directory/directory.action';
 
 export function* getSnapshotFromUserAuth(userAuth, additionalData) {
     try {
@@ -47,6 +48,8 @@ export function* signInWithEmail({ payload: { email, password } }) {
 
 export function* isAuthencated() {
     try {
+        yield put(fetchDirectoryStart());
+
         const userAuth = yield getCurrentUser();
 
         if (!userAuth) return;
@@ -78,8 +81,6 @@ export function* signUp({ payload: { displayName, email, password, confirmPasswo
             email,
             password
         );
-
-        console.log(user);
 
         yield put(signUpSuccess());
 

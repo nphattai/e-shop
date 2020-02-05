@@ -1,5 +1,4 @@
 import { FETCH_COLLECTIONS_START, FETCH_COLLECTIONS_SUCCESS, FETCH_COLLECTIONS_FAILURE } from './shop.type'
-import SHOP_DATA from './shop.data';
 
 const initialState = {
     collections: null,

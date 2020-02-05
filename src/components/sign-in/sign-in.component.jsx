@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../../components/custom-button/custom-button.component";
-import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 import { connect } from "react-redux";
 import {
   googleSignInStart,
@@ -22,6 +21,7 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
 
     try {
       emailSignInStart({ email, password });
+
       setFormData({
         email: "",
         password: ""

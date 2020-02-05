@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import CollectionPreview from "../collection-preview/collection-preview";
 import { connect } from "react-redux";
 import "./collection-overview.styles.scss";

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import CollectionItem from "../../components/collection-item/collection-item.component";
 import "./collection.styles.scss";

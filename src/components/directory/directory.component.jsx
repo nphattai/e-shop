@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import MenuItem from "../menu-item/menu-item.component";
 import { connect } from "react-redux";
 import "./directory.styles.scss";
@@ -20,8 +19,6 @@ const Directory = ({ directory }) => {
     </div>
   );
 };
-
-Directory.propTypes = {};
 
 const mapStateToProps = state => ({
   directory: state.directory

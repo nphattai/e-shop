@@ -5,6 +5,8 @@ let SHOP_DATA = [
     id: 1,
     title: "Hats",
     routeName: "hats",
+    linkUrl: "shop/hats",
+    imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
     items: [
       {
         id: 1,
@@ -66,6 +68,8 @@ let SHOP_DATA = [
     id: 2,
     title: "Sneakers",
     routeName: "sneakers",
+    linkUrl: "shop/sneakers",
+    imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
     items: [
       {
         id: 1,
@@ -121,6 +125,8 @@ let SHOP_DATA = [
     id: 3,
     title: "Jackets",
     routeName: "jackets",
+    linkUrl: "shop/jackets",
+    imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
     items: [
       {
         id: 1,
@@ -158,6 +164,9 @@ let SHOP_DATA = [
     id: 4,
     title: "Womens",
     routeName: "womens",
+    linkUrl: "shop/womens",
+    imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+    size: "large",
     items: [
       {
         id: 1,
@@ -207,6 +216,9 @@ let SHOP_DATA = [
     id: 5,
     title: "Mens",
     routeName: "mens",
+    linkUrl: "shop/mens",
+    imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+    size: "large",
     items: [
       {
         id: 1,
@@ -251,7 +263,22 @@ let SHOP_DATA = [
 SHOP_DATA.forEach(collection => {
   collection.id = genId();
 
+  collection.title = collection.title.toUpperCase();
+
   collection.items.forEach(item => (item.id = genId()));
 });
+
+// ????????????????????????????????????????????????? Note: data = data.map(()=> {}) !!!!
+// SHOP_DATA = SHOP_DATA.map(({ title, items, imageUrl, linkUrl, size }) => {
+//   return {
+//     id: genId(),
+//     title: title.toUpperCase(),
+//     items: items.map(item => (item.id = genId())),
+//     imageUrl,
+//     linkUrl,
+//     size
+//   };
+// });
+// ?????????????????????????????????????????????????
 
 export default SHOP_DATA;

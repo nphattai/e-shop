@@ -57,7 +57,6 @@ export const addCollectionAndDocument = async (collectionKey, objectsToAdd) => {
         const newDocRef = collectionRef.doc(obj.id);
 
         batch.set(newDocRef, obj);
-
     })
 
     console.log('addCollection is called')
@@ -76,8 +75,21 @@ export const convertCollectionsSnapshotToMap = async collections => {
             title,
         }
     })
-
     return transformedCollection;
+}
+
+export const convertCollectionsSnapshotToDirectoryMap = async collections => {
+    const transformedDirectory = await collections.docs.map(doc => {
+        const { title, imageUrl, linkUrl } = doc.data();
+
+        return {
+            id: doc.id,
+            title,
+            imageUrl,
+            linkUrl
+        }
+    })
+    return transformedDirectory;
 }
 
 firebase.initializeApp(config);

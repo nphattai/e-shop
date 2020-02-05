@@ -12,7 +12,7 @@ import './App.css';
 
 const App = ({ currentUser, checkUserSession }) => {
   useEffect(() => {
-    checkUserSession()
+    checkUserSession();
   }, []);
 
   return (

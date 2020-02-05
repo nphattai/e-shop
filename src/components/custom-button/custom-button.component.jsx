@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./custom-button.styles.scss";
 
 const CustomButton = ({
@@ -19,7 +18,5 @@ const CustomButton = ({
     </button>
   );
 };
-
-CustomButton.propTypes = {};
 
 export default CustomButton;
