@@ -5,7 +5,6 @@ import CollectionItem from "../../components/collection-item/collection-item.com
 import "./collection.styles.scss";
 
 const Collection = ({ match, collection }) => {
-  console.log(collection);
   return (
     <div className='collection-page'>
       <h2 className='title'>{collection.title}</h2>
@@ -24,10 +23,7 @@ const Collection = ({ match, collection }) => {
   );
 };
 
-Collection.propTypes = {};
-
 const mapStateToProps = (state, props) => {
-  console.log(props);
   return {
     collection: state.shop.collections.find(
       collection => collection.routeName === props.match.params.collectionId

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./collection-item.styles.scss";
 import CustomButton from "../custom-button/custom-button.component";
 import { connect } from "react-redux";
@@ -34,7 +33,5 @@ const CollectionItem = ({ id, name, price, imageUrl, addItem }) => {
     </div>
   );
 };
-
-CollectionItem.propTypes = {};
 
 export default connect(null, { addItem })(CollectionItem);

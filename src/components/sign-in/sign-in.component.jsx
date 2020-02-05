@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../../components/custom-button/custom-button.component";
 import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
+import { connect } from "react-redux";
+import {
+  googleSignInStart,
+  emailSignInStart
+} from "../../redux/user/user.action";
 import "./sign-in.styles.scss";
 
-const SignIn = () => {
+const SignIn = ({ googleSignInStart, emailSignInStart }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -17,8 +21,7 @@ const SignIn = () => {
     event.preventDefault();
 
     try {
-      await auth.signInWithEmailAndPassword(email, password);
-
+      emailSignInStart({ email, password });
       setFormData({
         email: "",
         password: ""
@@ -55,7 +58,11 @@ const SignIn = () => {
           <CustomButton type='submit' value='Submit Form'>
             Sign In
           </CustomButton>
-          <CustomButton onClick={signInWithGoogle} isGoogleSignIn={true}>
+          <CustomButton
+            type='button'
+            onClick={googleSignInStart}
+            isGoogleSignIn={true}
+          >
             Sign In With Google
           </CustomButton>
         </div>
@@ -64,6 +71,4 @@ const SignIn = () => {
   );
 };
 
-SignIn.propTypes = {};
-
-export default SignIn;
+export default connect(null, { googleSignInStart, emailSignInStart })(SignIn);

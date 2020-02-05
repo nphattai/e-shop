@@ -5,35 +5,14 @@ import ShopPage from './pages/shop/shoppage.component';
 import CheckOutPage from './pages/checkout/checkout.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { connect } from 'react-redux';
-import { setCurrentUser } from './redux/user/user.action';
-import './App.css';
 import ContactPage from './pages/contact/contactpage.component';
+import { checkUserSession } from './redux/user/user.action';
+import './App.css';
 
-const App = ({ currentUser, setCurrentUser }) => {
-
+const App = ({ currentUser, checkUserSession }) => {
   useEffect(() => {
-    auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-
-        userRef.onSnapshot(snapShot => {
-          return setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          });
-        });
-
-        return;
-      }
-
-      setCurrentUser(userAuth);
-    })
-
-    return () => {
-      return setCurrentUser(null);
-    };
+    checkUserSession()
   }, []);
 
   return (
@@ -56,4 +35,4 @@ const mapStateToProps = state => ({
   currentUser: state.user.currentUser,
 });
 
-export default connect(mapStateToProps, { setCurrentUser })(App);
+export default connect(mapStateToProps, { checkUserSession })(App);

@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./collection-overview.styles.scss";
 import CollectionPreview from "../collection-preview/collection-preview";
 import { connect } from "react-redux";
+import "./collection-overview.styles.scss";
 
-const CollectionOverview = ({ collections, history, match }) => {
-  console.log(collections);
+const CollectionOverview = ({ collections }) => {
   return (
     <div className='collection-overview'>
       {collections.map(({ id, ...otherCollectionProps }) => (
@@ -14,8 +13,6 @@ const CollectionOverview = ({ collections, history, match }) => {
     </div>
   );
 };
-
-CollectionOverview.propTypes = {};
 
 const mapStateToProps = state => ({
   collections: state.shop.collections

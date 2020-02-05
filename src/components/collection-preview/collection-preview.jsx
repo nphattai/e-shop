@@ -1,22 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
 import CollectionItem from "../collection-item/collection-item.component";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import "./collection-preview.styles.scss";
 
 const CollectionPreview = ({ title, items, history, routeName, match }) => {
-  console.log({ history, match });
   return (
     <div className='collection-preview'>
-      <h1
-        className='title'
-        onClick={() => history.push(`${match.url}/${routeName}`)}
-      >
-        {title.toUpperCase()}
-      </h1>
+      <Link to={`${match.url}/${routeName}`} target='_self'>
+        <h1 className='title'>{title.toUpperCase()}</h1>
+      </Link>
       <div className='preview'>
         {items
-          .filter(({ id }) => id < 5)
+          .filter(item => items.indexOf(item) < 4)
           .map(({ id, name, imageUrl, price }) => (
             <CollectionItem
               key={id}
@@ -30,7 +25,5 @@ const CollectionPreview = ({ title, items, history, routeName, match }) => {
     </div>
   );
 };
-
-CollectionPreview.propTypes = {};
 
 export default withRouter(CollectionPreview);

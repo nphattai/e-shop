@@ -1,4 +1,6 @@
-const SHOP_DATA = [
+import genId from "react-id-generator";
+
+let SHOP_DATA = [
   {
     id: 1,
     title: "Hats",
@@ -245,5 +247,11 @@ const SHOP_DATA = [
     ]
   }
 ];
+
+SHOP_DATA.forEach(collection => {
+  collection.id = genId();
+
+  collection.items.forEach(item => (item.id = genId()));
+});
 
 export default SHOP_DATA;
